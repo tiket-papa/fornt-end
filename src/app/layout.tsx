@@ -2,15 +2,21 @@ import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import './globals.css'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+
+import '@fortawesome/fontawesome-svg-core/styles.css'
+
 const poppins = Poppins({
-  subsets: ['latin'],
-  weight: '400'
+  subsets: ['latin'], weight: ['400', '500', '600', '700', '800']
 })
 
 export const metadata: Metadata = {
   title: 'Beranda TiketPapa',
   description: 'percayakan tiket wisatamu kepada tiket papa'
 }
+
+library.add(fas)
 
 export default function RootLayout ({
   children

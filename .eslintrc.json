@@ -6,7 +6,7 @@
       "jsx": true
     }
   },
-  "extends": ["eslint:recommended", "plugin:react/recommended", "next/core-web-vitals", "standard-with-typescript"],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "next", "standard-with-typescript"],
   "plugins": ["react", "react-hooks"],
   "rules": {
     // Add your ESLint rules here
