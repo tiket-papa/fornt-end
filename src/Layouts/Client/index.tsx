@@ -1,3 +1,4 @@
+import FooterClient from '@/components/Clinet/Footer/Footer'
 import NavClient from '@/components/Clinet/Nav/Nav'
 
 export default function Client ({ children }: { children: React.ReactNode }) {
@@ -7,6 +8,7 @@ export default function Client ({ children }: { children: React.ReactNode }) {
               <NavClient/>
           </header>
           {children}
+          <FooterClient/>
       </>
   )
 }
