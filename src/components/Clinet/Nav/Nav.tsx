@@ -12,11 +12,10 @@ export default function NavClient () {
 
   const handleNavigation = () => {
     mobileActive ? setMobileActive(false) : setMobileActive(true)
-    console.log(mobileActive)
   }
 
   return (
-      <nav className="container mx-auto sticky top-0 z-20">
+      <nav className="container mx-auto sticky md:relative top-0 z-20">
           <div className=" flex  justify-between items-center py-3 px-4 bg-white">
 
               <Link href={'https://nextjs.org/docs/api-reference/next/link#with-url-object'} className=' h-10 w-1/2 relative'>
