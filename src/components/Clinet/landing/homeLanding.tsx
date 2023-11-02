@@ -18,12 +18,11 @@ export default function HomeLanding () {
               src={image[0]}
               alt='logo tiket papa'
               className='mb-2'
-              layout='responsive'
               width={1920}
               height={0}
               priority
             />
-          <div className='grid grid-cols-5 grid-rows-2 gap-2 h-96'>
+          <div className='grid grid-cols-5 grid-rows-2 gap-2 h-52 md:h-96'>
               <div className='col-span-2 relative'>
 
                   <Image
@@ -31,6 +30,7 @@ export default function HomeLanding () {
                       alt='logo tiket papa'
                       className='object-cover'
                       fill={true}
+                      sizes="500px"
                    />
               </div>
               <div className='col-span-1 row-span-2 relative'>
@@ -39,6 +39,7 @@ export default function HomeLanding () {
                       alt='logo tiket papa'
                       className='object-cover object-center'
                       fill={true}
+                      sizes="500px"
                    />
               </div>
               <div className="col-span-2 row-span-2 relative">
@@ -47,6 +48,7 @@ export default function HomeLanding () {
                       alt='logo tiket papa'
                       className='object-cover object-center'
                       fill={true}
+                      sizes="500px"
                    />
               </div>
               <div className='col-span-2 relative'>
@@ -56,6 +58,7 @@ export default function HomeLanding () {
                       alt='logo tiket papa'
                       className='object-cover object-bottom'
                       fill={true}
+                      sizes="500px"
                       // width={0}
                       // height={0}
                   />
@@ -65,7 +68,6 @@ export default function HomeLanding () {
               src={image[1]}
               alt='logo tiket papa'
               className=' mt-2'
-              layout='responsive'
               width={1920}
               height={0}
               priority

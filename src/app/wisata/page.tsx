@@ -1,28 +1,71 @@
 import Client from '@/Layouts/Client'
+import CardList from '@/components/Clinet/Card/CardList'
 import ListLanding from '@/components/Clinet/landing/listLanding'
-import { faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { faAddressCard } from '@fortawesome/free-regular-svg-icons'
-import { faCode, faUser } from '@fortawesome/free-solid-svg-icons'
+import Link from 'next/link'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+const dataWisata = [
+  {
+    id: 1,
+    name: 'pantai marina',
+    image: '/storage/images/image1.jpg',
+    rating: 4.9,
+    location: 'pesawaran bandar lampung',
+    review: 1000,
+    price: 100000
+  },
+  {
+    id: 2,
+    name: 'pantai marina',
+    image: '/storage/images/image1.jpg',
+    rating: 4.9,
+    location: 'pesawaran bandar lampung',
+    review: 1000,
+    price: 100000
+  },
+  {
+    id: 3,
+    name: 'pantai marina',
+    image: '/storage/images/image1.jpg',
+    rating: 4.9,
+    location: 'pesawaran bandar lampung',
+    review: 1000,
+    price: 100000
+  },
+  {
+    id: 4,
+    name: 'pantai marina',
+    image: '/storage/images/image1.jpg',
+    rating: 4.9,
+    location: 'pesawaran bandar lampung',
+    review: 1000,
+    price: 100000
+  },
+  {
+    id: 5,
+    name: 'pantai marina',
+    image: '/storage/images/image1.jpg',
+    rating: 4.9,
+    location: 'pesawaran bandar lampung',
+    review: 1000,
+    price: 100000
+  }
 
-const dataIcon = [
-  faCode, faAddressCard, faUser, faTwitter
 ]
 
 export default function Wisata () {
+  //   console.log(dataWisata)
   return (
       <Client>
           <ListLanding/>
-          <main className="container mx-auto">
-              <div className="bg-blue-600">
-                  <h1>wisata</h1>
-
-                  { dataIcon.map((icon, index) => (
-                      <div key={index}>
-                          <FontAwesomeIcon icon={icon} className='text-2xl' />
-                      </div>
+          <main className="container mx-auto mt-10 px-3">
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-5 justify-items-center">
+                  { dataWisata.map((data: any, index: number) => (
+                      <Link href={`/wisata/${data.id}/detail`} key={index}>
+                          <CardList data={data} />
+                      </Link>
                   ))}
+                  {/* <CardList data={dataWisata[0]} /> */}
+
               </div>
           </main>
       </Client>
