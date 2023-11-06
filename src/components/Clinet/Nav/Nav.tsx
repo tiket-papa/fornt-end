@@ -34,7 +34,7 @@ export default function NavClient () {
 
               <ul className=' hidden md:flex gap-10 items-center text-text-color font-semibold'>
                   <li>
-                      <Link className=' drop-shadow-[0_5px_20px_rgba(0,0,0,0.45)]' href={'/'}>Bernada </Link>
+                      <Link className=' drop-shadow-[0_5px_20px_rgba(0,0,0,0.45)]' href={'/'}>Beranda </Link>
                   </li>
                   <li>
                       <Link className=' drop-shadow-[0_5px_20px_rgba(0,0,0,0.45)]'href={'/wisata'}>Pariwisata</Link>
@@ -57,7 +57,7 @@ export default function NavClient () {
                       <BtnLink text='Daftar' target={'/'}/>
                   </li>
                   <li className=''>
-                      <Link className='py-5 block drop-shadow-[0_5px_20px_rgba(0,0,0,0.45)] hover:bg-main-color' href={'/'}>Bernada </Link>
+                      <Link className='py-5 block drop-shadow-[0_5px_20px_rgba(0,0,0,0.45)] hover:bg-main-color' href={'/'}>Beranda </Link>
                   </li>
                   <li className=''>
                       <Link className='py-5 block drop-shadow-[0_5px_20px_rgba(0,0,0,0.45)]  hover:bg-main-color'href={'/wisata'}>Pariwisata</Link>
