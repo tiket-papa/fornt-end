@@ -30,7 +30,7 @@ export default function CardList (
 
   return (
       <>
-          <div className="cursor-pointer drop-shadow-[0_5px_20px_rgba(0,0,0,0.45)] w-full md:w-72 rounded-2xl bg-white overflow-hidden">
+          <div className="cursor-pointer drop-shadow-[0_5px_20px_rgba(0,0,0,0.45)] w-full rounded-2xl bg-white overflow-hidden">
               <div className="md:h-36 h-20 relative">
                   <Image
                       src={data.image}
@@ -46,7 +46,7 @@ export default function CardList (
                   <div className="flex gap-2 text-xs md:text-sm text-gray-600">
                       <p className='font-semibold'>{data.rating}<span className='font-normal'>/5</span> </p>
                       {stars.map((star: any, index: number) => (
-                          <span key={index} className='pe-1'>{star}</span>
+                          <span key={index} className='pe-[1px]'>{star}</span>
                       )) }
                   </div>
                   <div className="flex text-[8px] md:text-[12px] text-gray-600 gap-1 items-center mb-5 md:mb-16">
