@@ -28,7 +28,6 @@ export default function DetailWisata ({ params }: { params: { id: string } }) {
       <Client>
           <DetailLanding images ={contentImage}/>
           <main className="container mx-auto mt-7">
-              <h1>ini  detail {dataById?.name}</h1>
               <DetailNav/>
               <MainComponent data={dataById} />
           </main>
