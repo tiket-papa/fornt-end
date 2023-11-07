@@ -27,7 +27,7 @@ export default function MainComponent (
   }).format(data.price).replace('Rp', 'IDR.')
   return (
       <>
-          <div className="flex mt-5 justify-between px-3">
+          <div id='info' className="flex mt-5 justify-between px-3">
               <div className='flex gap-5'>
                   <div className='p-4 rounded-2xl border border-gray-200 w-fit'>
                       <div className="w-24 h-24 relative rounded-2xl overflow-hidden drop-shadow-[0_0_10px_rgba(0,0,0,0.30)]">

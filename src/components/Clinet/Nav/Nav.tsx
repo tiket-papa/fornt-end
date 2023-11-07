@@ -15,8 +15,8 @@ export default function NavClient () {
   }
 
   return (
-      <nav className="container mx-auto sticky md:relative top-0 z-20">
-          <div className=" flex  justify-between items-center py-3 px-4 bg-white">
+      <nav className=" bg-white sticky md:relative top-0 z-20">
+          <div className=" container mx-auto flex  justify-between items-center py-3 px-4">
 
               <Link href={'https://nextjs.org/docs/api-reference/next/link#with-url-object'} className=' h-10 w-1/2 relative'>
                   <Image

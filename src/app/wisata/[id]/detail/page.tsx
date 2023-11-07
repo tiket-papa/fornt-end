@@ -3,9 +3,41 @@ import DetailLanding from '@/components/Clinet/landing/detailLanding'
 import { dataWisata } from '../../page'
 import DetailNav from '@/components/Clinet/Detail/Nav'
 import MainComponent from '@/components/Clinet/Detail/MainComponent'
+import LocationComponent from '@/components/Clinet/Detail/Location'
+import { faCampground, faLandmark, faMusic, faToilet, faUmbrellaBeach, faUtensils } from '@fortawesome/free-solid-svg-icons'
+import CardItemList from '@/components/Clinet/Card/CardItemList'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 // fake data
 const data = dataWisata
+
+const datafasilitas = [
+  {
+    name: 'Beach View',
+    icon: faUmbrellaBeach
+  },
+  {
+    name: 'Gazebo',
+    icon: faLandmark
+  },
+  {
+    name: 'Toilet',
+    icon: faToilet
+  },
+  {
+    name: 'kantin',
+    icon: faUtensils
+  },
+  {
+    name: 'Tenda',
+    icon: faCampground
+  },
+  {
+    name: 'Music',
+    icon: faMusic
+  }
+]
+
 export default function DetailWisata ({ params }: { params: { id: string } }) {
   const id = params.id
 
@@ -16,6 +48,13 @@ export default function DetailWisata ({ params }: { params: { id: string } }) {
   const dataById = getDataId(parseInt(id))
   if (dataById === undefined) {
     return <h1>404 - Page Not Found</h1>
+  }
+
+  // fake data
+  const dataLokation = {
+    name: dataById.name,
+    location: 'Jl.+Oscar,+Sukarame,+Kec.+Sukarame,+Kota+Bandar+Lampung,+Lampung',
+    range: 34
   }
 
   const contentImage = [
@@ -30,6 +69,35 @@ export default function DetailWisata ({ params }: { params: { id: string } }) {
           <main className="container mx-auto mt-7">
               <DetailNav/>
               <MainComponent data={dataById} />
+              <LocationComponent data={dataLokation} />
+
+              <div className='' id='fasilitas'>
+                  <p className="font-bold text-2xl pt-5 ">Fasilitas</p>
+                  <div id='kolasi' className="grid grid-cols-6 gap-6">
+                      {datafasilitas.map((item, index) => (
+                          <CardItemList key={index} data={undefined} >
+                              <FontAwesomeIcon className='text-2xl' icon={item.icon} />
+                              <p>{item.name}</p>
+                          </CardItemList>
+                      ))}
+
+                  </div>
+                  <div className='border-b pt-4'></div>
+              </div>
+
+              <div className='' id='fasilitas'>
+                  <p className="font-bold text-2xl pt-5 ">Fasilitas Publik Terdekat</p>
+                  <div id='kolasi' className="grid grid-cols-6 gap-6">
+                      {datafasilitas.map((item, index) => (
+                          <CardItemList key={index} data={undefined} >
+                              <FontAwesomeIcon className='text-2xl' icon={item.icon} />
+                              <p>{item.name}</p>
+                          </CardItemList>
+                      ))}
+
+                  </div>
+                  <div className='border-b pt-4'></div>
+              </div>
           </main>
       </Client>
   )

@@ -12,16 +12,16 @@ export default function DetailNav () {
                       <Link href={'#lokasi'} className='drop-shadow-[0_5px_20px_rgba(0,0,0,0.45)]'>Lokasi</Link>
                   </li>
                   <li>
-                      <Link href={'#Fasilitas'} className='drop-shadow-[0_5px_20px_rgba(0,0,0,0.45)]'>Fasilitas</Link>
+                      <Link href={'#fasilitas'} className='drop-shadow-[0_5px_20px_rgba(0,0,0,0.45)]'>Fasilitas</Link>
                   </li>
                   <li>
-                      <Link href={'#FasilitasPublik'} className='drop-shadow-[0_5px_20px_rgba(0,0,0,0.45)]'>Fasilitas Publik</Link>
+                      <Link href={'#fasilitas-publik'} className='drop-shadow-[0_5px_20px_rgba(0,0,0,0.45)]'>Fasilitas Publik</Link>
                   </li>
                   <li>
-                      <Link href={'#Reveiw'} className='drop-shadow-[0_5px_20px_rgba(0,0,0,0.45)]'>Reveiw</Link>
+                      <Link href={'#reveiw'} className='drop-shadow-[0_5px_20px_rgba(0,0,0,0.45)]'>Reveiw</Link>
                   </li>
                   <li>
-                      <Link href={'#Galery'} className='drop-shadow-[0_5px_20px_rgba(0,0,0,0.45)]'>Galery</Link>
+                      <Link href={'#galery'} className='drop-shadow-[0_5px_20px_rgba(0,0,0,0.45)]'>Galery</Link>
                   </li>
               </ul>
           </nav>
