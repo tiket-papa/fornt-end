@@ -7,6 +7,7 @@ import LocationComponent from '@/components/Clinet/Detail/Location'
 import { faCampground, faLandmark, faMusic, faToilet, faUmbrellaBeach, faUtensils } from '@fortawesome/free-solid-svg-icons'
 import CardItemList from '@/components/Clinet/Card/CardItemList'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ReviewComponent from '@/components/Clinet/Detail/Review'
 
 // fake data
 const data = dataWisata
@@ -35,6 +36,33 @@ const datafasilitas = [
   {
     name: 'Music',
     icon: faMusic
+  }
+]
+
+const dataPublickFasility = [
+  {
+    name: 'terminal',
+    icon: faUmbrellaBeach,
+    Range: 23,
+    target: '#'
+  },
+  {
+    name: 'terminal',
+    icon: faUmbrellaBeach,
+    Range: 23,
+    target: '#'
+  },
+  {
+    name: 'terminal',
+    icon: faUmbrellaBeach,
+    Range: 23,
+    target: '#'
+  },
+  {
+    name: 'terminal',
+    icon: faUmbrellaBeach,
+    Range: 23,
+    target: '#'
   }
 ]
 
@@ -71,8 +99,8 @@ export default function DetailWisata ({ params }: { params: { id: string } }) {
               <MainComponent data={dataById} />
               <LocationComponent data={dataLokation} />
 
-              <div className='' id='fasilitas'>
-                  <p className="font-bold text-2xl pt-5 ">Fasilitas</p>
+              <section className='' id='fasilitas'>
+                  <p className="font-bold text-2xl pt-5 pb-3 ">Fasilitas</p>
                   <div id='kolasi' className="grid grid-cols-6 gap-6">
                       {datafasilitas.map((item, index) => (
                           <CardItemList key={index} data={undefined} >
@@ -83,21 +111,26 @@ export default function DetailWisata ({ params }: { params: { id: string } }) {
 
                   </div>
                   <div className='border-b pt-4'></div>
-              </div>
+              </section>
 
-              <div className='' id='fasilitas'>
-                  <p className="font-bold text-2xl pt-5 ">Fasilitas Publik Terdekat</p>
+              <section className='' id='fasilitas'>
+                  <p className="font-bold text-2xl pt-5 pb-3">Fasilitas Publik Terdekat</p>
                   <div id='kolasi' className="grid grid-cols-6 gap-6">
-                      {datafasilitas.map((item, index) => (
-                          <CardItemList key={index} data={undefined} >
+                      {dataPublickFasility.map((item, index) => (
+                          <CardItemList key={index} data={{ target: item.target }} >
                               <FontAwesomeIcon className='text-2xl' icon={item.icon} />
-                              <p>{item.name}</p>
+                              <div className=''>
+                                  <p className='text-sm'>{item.name}</p>
+                                  <p className='text-xs'>{item.Range}</p>
+                              </div>
                           </CardItemList>
                       ))}
 
                   </div>
                   <div className='border-b pt-4'></div>
-              </div>
+              </section>
+
+              <ReviewComponent data={{ idWisata: dataById.id }} />
           </main>
       </Client>
   )
