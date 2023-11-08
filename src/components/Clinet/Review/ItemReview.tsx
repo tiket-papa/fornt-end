@@ -14,7 +14,6 @@ export default function ItemReviewComponent ({ data }:
 }) {
   let content = null
   if (data.image != null) {
-    console.log(data.image)
     content = <>
         {data.image.map((item: any, index: number) => (
             <div className="w-14 h-14 relative" key={index}>
@@ -33,7 +32,7 @@ export default function ItemReviewComponent ({ data }:
 
   const stars = []
 
-  for (let i = 1; i < data.rating; i++) {
+  for (let i = 1; i <= data.rating; i++) {
     const StarIcon = <FontAwesomeIcon icon={faStar} className='text-main-color' />
     stars.push(StarIcon)
   }

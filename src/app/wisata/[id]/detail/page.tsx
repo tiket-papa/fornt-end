@@ -8,6 +8,7 @@ import { faCampground, faLandmark, faMusic, faToilet, faUmbrellaBeach, faUtensil
 import CardItemList from '@/components/Clinet/Card/CardItemList'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ReviewComponent from '@/components/Clinet/Detail/Review'
+import GalaryComponet from '@/components/Clinet/Detail/Galery'
 
 // fake data
 const data = dataWisata
@@ -94,14 +95,14 @@ export default function DetailWisata ({ params }: { params: { id: string } }) {
   return (
       <Client>
           <DetailLanding images ={contentImage}/>
-          <main className="container mx-auto mt-7">
+          <main className="container mx-auto mt-7 overflow-hidden px-3 md:px-0">
               <DetailNav/>
               <MainComponent data={dataById} />
               <LocationComponent data={dataLokation} />
 
               <section className='' id='fasilitas'>
                   <p className="font-bold text-2xl pt-5 pb-3 ">Fasilitas</p>
-                  <div id='kolasi' className="grid grid-cols-6 gap-6">
+                  <div id='fasilitas' className="grid grid-cols-2 md:grid-cols-6 gap-3 md:gap-6">
                       {datafasilitas.map((item, index) => (
                           <CardItemList key={index} data={undefined} >
                               <FontAwesomeIcon className='text-2xl' icon={item.icon} />
@@ -115,7 +116,7 @@ export default function DetailWisata ({ params }: { params: { id: string } }) {
 
               <section className='' id='fasilitas'>
                   <p className="font-bold text-2xl pt-5 pb-3">Fasilitas Publik Terdekat</p>
-                  <div id='kolasi' className="grid grid-cols-6 gap-6">
+                  <div id='fasilitas-publik' className="grid grid-cols-2 md:grid-cols-6 gap-3 md:gap-6">
                       {dataPublickFasility.map((item, index) => (
                           <CardItemList key={index} data={{ target: item.target }} >
                               <FontAwesomeIcon className='text-2xl' icon={item.icon} />
@@ -125,12 +126,13 @@ export default function DetailWisata ({ params }: { params: { id: string } }) {
                               </div>
                           </CardItemList>
                       ))}
-
                   </div>
                   <div className='border-b pt-4'></div>
               </section>
 
               <ReviewComponent data={{ idWisata: dataById.id }} />
+
+              <GalaryComponet data={{ idWisata: dataById.id }} />
           </main>
       </Client>
   )

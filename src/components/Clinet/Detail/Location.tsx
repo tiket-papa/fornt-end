@@ -11,7 +11,7 @@ export default function LocationComponent ({ data }: { data: {
   return (
       <>
           <p className="font-bold text-2xl pt-5 ">Lokasi</p>
-          <div id='kolasi' className="flex gap-5 pt-4 px-3 justify-start items-end">
+          <div id='lokasi' className="flex gap-5 pt-4 px-3 justify-start items-end">
               <a target='_blank' rel="noopener noreferrer" href={`https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${data.location}`} className="p-5 rounded-2xl w-fit border border-gray-200">
                   <div className="w-12 h-12 relative">
                       <Image
