@@ -130,7 +130,7 @@ export default function DetailWisata ({ params }: { params: { id: string } }) {
                   <div className='border-b pt-4'></div>
               </section>
 
-              <ReviewComponent data={{ idWisata: dataById.id }} />
+              <ReviewComponent data={dataById} />
 
               <GalaryComponet data={{ idWisata: dataById.id }} />
           </main>

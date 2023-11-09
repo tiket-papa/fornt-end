@@ -55,12 +55,11 @@ export default function ItemReviewComponent ({ data }:
                   <p className='text-lg text-gray-500 pt-4 pb-2'>{data.review}</p>
 
               </div>
-
               <div className="flex justify-end items-end">
                   {stars.map((star: any, index: number) => (
                       <span key={index} className='pe-[2px] text-lg'>{star}</span>
                   ))}
-                  <p className='ps-2 text-sm text-gray-500 font-semibold'>{data.date.toLocaleString(undefined, { month: 'long' })} {data.date.getFullYear()}</p>
+                  <p className='ps-2 text-sm text-gray-500 font-semibold'>{data.date.toLocaleString(undefined, { month: 'long', year: 'numeric' })}</p>
               </div>
           </div>
       </>
