@@ -1,7 +1,7 @@
 import Client from '@/Layouts/Client'
 import DetailLanding from '@/components/Clinet/landing/detailLanding'
 
-export default function Tiket ({ params }: { params: { id: number } }) {
+export default function Tiket ({ params }: { params: { id: string } }) {
   console.log(params.id)
 
   const contentImage = [
@@ -35,7 +35,9 @@ export default function Tiket ({ params }: { params: { id: number } }) {
       <Client>
           <DetailLanding images = {contentImage}/>
           <main className='container mx-auto  pt-5'>
-
+              {tiketData.map((item, index) => (
+                  <span key={index}>{item.name}</span>
+              ))}
           </main>
       </Client>
   )
