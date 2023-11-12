@@ -1,5 +1,6 @@
 'use client'
 import { integerFormaterId } from '@/utilities/integerFormater'
+import { priceFormaterID } from '@/utilities/priceFormater'
 import { faCircle, faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
@@ -21,12 +22,6 @@ export default function CardList (
     const StarIcon = <FontAwesomeIcon icon={faStar} className='text-main-color' />
     stars.push(StarIcon)
   }
-
-  const idrPrice = new Intl.NumberFormat('id-ID', {
-    style: 'currency',
-    currency: 'IDR',
-    minimumFractionDigits: 2
-  }).format(data.price).replace('Rp', 'IDR.')
 
   return (
       <>
@@ -55,7 +50,7 @@ export default function CardList (
                       <p>{data.location}</p>
                   </div>
                   <span className='block text-gray-600 text-sm md:text-base'>mulai dari</span>
-                  <span className=' text-red-500 font-bold text-base md:text-2xl'>{idrPrice}</span>
+                  <span className=' text-red-500 font-bold text-base md:text-2xl'>{priceFormaterID(data.price)}</span>
               </div>
 
           </div>

@@ -59,7 +59,7 @@ export default function MainComponent (
                   <span className='font-bold'>Mulai Dari</span>
                   <span className='text-3xl text-red-500 font-bold'>{idrPrice}</span>
                   <span className='text-xs'>*sesuai dengan jenis tiket</span>
-                  <BtnLink text='Pilih Paket' target={'#'} />
+                  <BtnLink text='Pilih Paket' target={`/wisata/${data.id}/tiket`} />
               </div>
           </div>
           <div className='border-b pt-4'></div>
