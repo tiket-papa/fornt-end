@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { takeEvery, select, call, put } from 'redux-saga/effects'
 import { increment } from '..'
 import { type RootState } from '@/redux/strore'

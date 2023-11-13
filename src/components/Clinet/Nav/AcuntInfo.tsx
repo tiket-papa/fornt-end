@@ -3,9 +3,12 @@ import { faAngleDown, faAngleUp, faGear, faRightFromBracket, faTicket } from '@f
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 export default function AccountInfoComponent () {
+  const route = useRouter()
+  const path = usePathname()
   const [isActive, setIsActive] = useState(false)
   const [account, setAccount] = useState<{ uuid: string, name: string, profile: string, role: string } | null>(null)
 
@@ -24,6 +27,8 @@ export default function AccountInfoComponent () {
       role: 'user'
     })
   }
+
+  console.log(path)
 
   let content = null
 
