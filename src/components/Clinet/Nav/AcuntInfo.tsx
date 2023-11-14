@@ -1,34 +1,28 @@
 import BtnLink from '@/components/Button'
+import { logout } from '@/redux/Features/Auth/slice'
+import { type RootState } from '@/redux/strore'
 import { faAngleDown, faAngleUp, faGear, faRightFromBracket, faTicket } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 export default function AccountInfoComponent () {
-  const route = useRouter()
+  const dispatch = useDispatch()
+  const account = useSelector((state: RootState) => state.auth.user)
   const path = usePathname()
   const [isActive, setIsActive] = useState(false)
-  const [account, setAccount] = useState<{ uuid: string, name: string, profile: string, role: string } | null>(null)
+  //   const [account, setAccount] = useState<{ uuid: string, name: string, profile: string, role: string } | null>(null)
 
   const handleIsActive = () => {
     isActive ? setIsActive(false) : setIsActive(true)
   }
 
   const handleLogOut = () => {
-    setAccount(null)
+    dispatch(logout())
   }
-  const handleSingIn = () => {
-    setAccount({
-      uuid: 'e7efa8d3-54a7-49ea-881c-77ff774b43cf',
-      name: 'babang tamvan',
-      profile: '/Statick/fake/user-fake.png',
-      role: 'user'
-    })
-  }
-
-  console.log(path)
 
   let content = null
 
@@ -78,9 +72,10 @@ export default function AccountInfoComponent () {
   } else {
     content = <>
         <li className='flex gap-5 items-center'>
+            {path}
             {/* <Link className=' drop-shadow-[0_5px_20px_rgba(0,0,0,0.45)]' href={'/'}>Masuk</Link> */}
-            <button className=' drop-shadow-[0_5px_20px_rgba(0,0,0,0.45)]' onClick={() => { handleSingIn() }}>Masuk</button>
-            <BtnLink text='Daftar' target={'/'}/>
+            <Link className=' drop-shadow-[0_5px_20px_rgba(0,0,0,0.45)]' href={'/register'}>Daftar</Link>
+            <BtnLink text='Masuk' target={`/login?target=${path}`}/>
         </li>
     </>
   }

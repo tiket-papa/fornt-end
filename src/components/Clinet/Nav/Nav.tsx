@@ -3,12 +3,16 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown, faAngleUp, faBars } from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import AccountInfoComponent from './AcuntInfo'
+import { useDispatch } from 'react-redux'
+import { cekLoginSesion } from '@/redux/Features/Auth/slice'
 
 export default function NavClient () {
   const [mobileActive, setMobileActive] = useState(false)
   const [isTypeActive, setIsTypeActive] = useState(false)
+
+  const dispatch = useDispatch()
 
   const logo = '/Statick/image/logo_tiket_papa.png'
 
@@ -20,6 +24,11 @@ export default function NavClient () {
     isTypeActive ? setIsTypeActive(false) : setIsTypeActive(true)
   }
 
+  useEffect(() => {
+    // if (typeof window !== 'undefined') {
+    dispatch(cekLoginSesion())
+    // }
+  }, [dispatch])
   return (
       <nav className=" bg-white sticky md:relative top-0 z-20">
           <div className=" container mx-auto flex  justify-between items-center py-3 px-4">

@@ -7,6 +7,8 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import Providers from '@/redux/provider'
+// import axios from 'axios'
+// axios.defaults.withCredentials = true
 
 const poppins = Poppins({
   subsets: ['latin'], weight: ['400', '500', '600', '700', '800']

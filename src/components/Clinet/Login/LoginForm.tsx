@@ -1,14 +1,27 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 'use client'
+import { loginRequest } from '@/redux/Features/Auth/slice'
+import { type RootState } from '@/redux/strore'
 import { faEye, faEyeSlash, faKey, faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 export default function LoginForm () {
   const [isShow, setIsShow] = useState(false)
   const [email, setEmial] = useState('')
   const [password, setPassword] = useState('')
   const [error, setErrors] = useState<Record<string, string>>({})
+
+  const dispatch = useDispatch()
+  const authResul = useSelector((state: RootState) => state.auth)
+
+  const route = useRouter()
+  const param = useSearchParams()
+  let target = param.get('target') as string
+  if (target === null) target = '/' as string
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {}
@@ -20,21 +33,24 @@ export default function LoginForm () {
     if (password === '') {
       newErrors.password = 'Password is required'
     }
-
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
+
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault()
-
     if (validateForm()) {
-      // Perform login logic here, e.g., send a request to an authentication API
-      console.log('Login submitted with:', { email, password })
+      dispatch(loginRequest({ email, password }))
     } else {
       console.log('Form validation failed', error)
     }
+  }
 
-    console.log((error.password !== undefined))
+  // if (Object.keys(error).length !== 0) { console.log(error) }
+  if (authResul.token !== null) {
+    if (target !== null) {
+      route.push(target)
+    } else route.push('/')
   }
 
   const handleShowPassword = () => {
@@ -50,7 +66,9 @@ export default function LoginForm () {
               <span className='block text-3xl '>Welcome to TiketPapa</span>
               <span className='block text-lg'>Login to continue</span>
           </div>
+
           <form onSubmit={handleSubmit} className="block pt-7">
+              {(authResul.error !== null) && <p className=' p-3 border-red-600 border rounded-lg bg-red-100 text-red-700'>{authResul.error}</p>}
               <div className="py-3">
                   <label htmlFor="email" className="font-bold">Email or Username</label>
                   <div className="flex gap-4 items-center pt-2">
