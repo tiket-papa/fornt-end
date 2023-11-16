@@ -1,9 +1,17 @@
+'use client'
 import Client from '@/Layouts/Client'
+import TiketListComponent from '@/components/Clinet/Tikte/TiketList'
 import DetailLanding from '@/components/Clinet/landing/detailLanding'
+import { type RootState } from '@/redux/strore'
+// import { usePathname, useRouter } from 'next/navigation'
+import { useSelector } from 'react-redux'
 
 export default function Tiket ({ params }: { params: { id: string } }) {
-  console.log(params.id)
-
+  // if (authResul.token === null) {
+  //   router.push(`/login?target=${path}`)
+  // }
+  const authResul = useSelector((state: RootState) => state.auth)
+  console.log(authResul)
   const contentImage = [
     '/storage/images/image1.jpg',
     '/storage/images/image2.jpg',
@@ -15,8 +23,11 @@ export default function Tiket ({ params }: { params: { id: string } }) {
   const tiketData = [
     {
       id: '53e1e187-c4a9-44f9-86e3-480201212d2a',
-      name: 'tiket masuk',
-      parameter: 'motor',
+      name: 'tiket Cammping + tenda',
+      parameter: {
+        jumlah: 1,
+        satuan: 'malam'
+      },
       image: '/storage/images/image2.jpg',
       harga: 30000,
       fasilitas: [
@@ -25,18 +36,39 @@ export default function Tiket ({ params }: { params: { id: string } }) {
         },
         {
           name: 'gazebo',
-          unit: 2
+          unit: '1 unit'
+        }
+      ],
+      idWisata: params.id
+    },
+    {
+      id: '53e1e187-c4a9-44f9-86e3-480201212d2a',
+      name: 'tiket masuk',
+      parameter: {
+        jumlah: 1,
+        satuan: 'motor'
+      },
+      image: '/storage/images/image2.jpg',
+      harga: 30000,
+      fasilitas: [
+        {
+          name: 'parkir'
+        },
+        {
+          name: 'gazebo',
+          unit: '1 unit'
         }
       ],
       idWisata: params.id
     }
   ]
+
   return (
       <Client>
           <DetailLanding images = {contentImage}/>
-          <main className='container mx-auto  pt-5'>
+          <main className='container mx-auto px-3 pt-5'>
               {tiketData.map((item, index) => (
-                  <span key={index}>{item.name}</span>
+                  <TiketListComponent key={index} data={item}/>
               ))}
           </main>
       </Client>

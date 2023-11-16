@@ -1,8 +1,11 @@
+'use client'
 import BtnLink from '@/components/Button'
+import { type RootState } from '@/redux/strore'
 import { integerFormaterId } from '@/utilities/integerFormater'
 import { faCircle, faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
+import { useSelector } from 'react-redux'
 
 export default function MainComponent (
   { data }: {
@@ -14,6 +17,7 @@ export default function MainComponent (
       review: number
       price: number }
   }) {
+  const authResul = useSelector((state: RootState) => state.auth)
   const stars: any[] = []
 
   for (let i = 1; i < data.rating; i++) {
@@ -25,6 +29,7 @@ export default function MainComponent (
     currency: 'IDR',
     minimumFractionDigits: 2
   }).format(data.price).replace('Rp', 'IDR.')
+
   return (
       <>
           <div id='info' className="flex mt-5 justify-between px-3">
@@ -59,7 +64,7 @@ export default function MainComponent (
                   <span className='font-bold'>Mulai Dari</span>
                   <span className='text-3xl text-red-500 font-bold'>{idrPrice}</span>
                   <span className='text-xs'>*sesuai dengan jenis tiket</span>
-                  <BtnLink text='Pilih Paket' target={'#'} />
+                  <BtnLink text='Pilih Paket' target={(authResul.token === null) ? `/login?target=/wisata/${data.id}/tiket` : `/wisata/${data.id}/tiket`} />
               </div>
           </div>
           <div className='border-b pt-4'></div>
