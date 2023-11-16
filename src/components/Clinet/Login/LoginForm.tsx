@@ -41,6 +41,7 @@ export default function LoginForm () {
     e.preventDefault()
     if (validateForm()) {
       dispatch(loginRequest({ email, password }))
+      if (authResul.error !== null) setPassword('')
     } else {
       console.log('Form validation failed', error)
     }
@@ -49,8 +50,8 @@ export default function LoginForm () {
   // if (Object.keys(error).length !== 0) { console.log(error) }
   if (authResul.token !== null) {
     if (target !== null) {
-      route.push(target)
-    } else route.push('/')
+      route.replace(target)
+    } else route.replace('/')
   }
 
   const handleShowPassword = () => {

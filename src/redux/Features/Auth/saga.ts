@@ -7,16 +7,16 @@ import { type ResponseAtributes } from '@/utilities/interface/responseInteface'
 
 function * LoginSaga (action: { type: string, payload: { email: string, password: string } }) {
   try {
-    const result: ResponseAtributes = yield call(axios.post, 'http://localhost:5000/api/v2/auth/login', {
-      user_email: action.payload.email,
-      password: action.payload.password
-    })
-    const accesToket = result.data.data.access_toket as string
+    // const result: ResponseAtributes = yield call(axios.post, 'http://localhost:5000/api/v2/auth/login', {
+    //   user_email: action.payload.email,
+    //   password: action.payload.password
+    // })
+    // const accesToket = result.data.data.access_toket as string
 
-    // if (action.payload.email !== 'test@test.com' || action.payload.password !== '12345') {
-    //   yield put(loginFailure('login gagal'))
-    // }
-    // const accesToket = 'ajshdfgjkasrbc weoriyqpoiy1892734nmsdflk3459sufd[co58=3209485'
+    if (action.payload.email !== 'test@test.com' || action.payload.password !== '12345') {
+      yield put(loginFailure('login gagal'))
+    }
+    const accesToket = 'ajshdfgjkasrbc weoriyqpoiy1892734nmsdflk3459sufd[co58=3209485'
     const user = {
       uuid: 'e7efa8d3-54a7-49ea-881c-77ff774b43cf',
       name: 'babang tamvan',
@@ -32,11 +32,14 @@ function * LoginSaga (action: { type: string, payload: { email: string, password
   }
 }
 
-function * cekLoginSaga (action: { type: string }) {
+function * cekLoginSaga (_action: { type: string }) {
   try {
-    const result: ResponseAtributes = yield call(axios.get, 'http://localhost:5000/api/v2/auth/refress_token')
+    // const result: ResponseAtributes = yield call(axios.get, 'http://localhost:5000/api/v2/auth/refress_token')
 
-    const accesToket = result.data.data.access_toket as string
+    // const accesToket = result.data.data.access_toket as string
+
+    const accesToket = 'ajshdfgjkasrbc weoriyqpoiy1892734nmsdflk3459sufd[co58=3209485'
+
     const user = {
       uuid: 'e7efa8d3-54a7-49ea-881c-77ff774b43cf',
       name: 'babang tamvan',
@@ -50,8 +53,13 @@ function * cekLoginSaga (action: { type: string }) {
     yield put(logout())
   }
 }
+// eslint-disable-next-line require-yield
+function * logoutSaga (_action: { type: string }) {
+  console.log('logout')
+}
 
 export default function * wathcAuthSaga () {
   yield takeLatest(loginRequest.type, LoginSaga)
   yield takeLatest(cekLoginSesion.type, cekLoginSaga)
+  yield takeLatest(logout.type, logoutSaga)
 }

@@ -1,8 +1,17 @@
+'use client'
 import Client from '@/Layouts/Client'
 import TiketListComponent from '@/components/Clinet/Tikte/TiketList'
 import DetailLanding from '@/components/Clinet/landing/detailLanding'
+import { type RootState } from '@/redux/strore'
+// import { usePathname, useRouter } from 'next/navigation'
+import { useSelector } from 'react-redux'
 
 export default function Tiket ({ params }: { params: { id: string } }) {
+  // if (authResul.token === null) {
+  //   router.push(`/login?target=${path}`)
+  // }
+  const authResul = useSelector((state: RootState) => state.auth)
+  console.log(authResul)
   const contentImage = [
     '/storage/images/image1.jpg',
     '/storage/images/image2.jpg',
@@ -53,6 +62,7 @@ export default function Tiket ({ params }: { params: { id: string } }) {
       idWisata: params.id
     }
   ]
+
   return (
       <Client>
           <DetailLanding images = {contentImage}/>
