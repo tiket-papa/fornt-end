@@ -1,8 +1,8 @@
 'use client'
 
-import { takeLatest, put, call } from 'redux-saga/effects'
+import { takeLatest, put } from 'redux-saga/effects'
 import { cekLoginSesion, loginFailure, loginRequest, loginSuccess, logout } from './slice'
-import axios from '@/utilities/axois'
+// import axios from '@/utilities/axois'
 import { type ResponseAtributes } from '@/utilities/interface/responseInteface'
 
 function * LoginSaga (action: { type: string, payload: { email: string, password: string } }) {
