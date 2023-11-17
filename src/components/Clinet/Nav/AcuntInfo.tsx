@@ -72,7 +72,6 @@ export default function AccountInfoComponent () {
   } else {
     content = <>
         <li className='flex gap-5 items-center'>
-            {path}
             {/* <Link className=' drop-shadow-[0_5px_20px_rgba(0,0,0,0.45)]' href={'/'}>Masuk</Link> */}
             <Link className=' drop-shadow-[0_5px_20px_rgba(0,0,0,0.45)]' href={'/register'}>Daftar</Link>
             <BtnLink text='Masuk' target={`/login?target=${path}`}/>

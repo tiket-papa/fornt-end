@@ -1,4 +1,5 @@
 'use client'
+
 import LoginForm from '@/components/Clinet/Login/LoginForm'
 import Image from 'next/image'
 
