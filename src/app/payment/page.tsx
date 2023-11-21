@@ -4,32 +4,32 @@ import BuyerLandingComponent from '@/components/Clinet/landing/BuyerLanding'
 import { priceFormaterID } from '@/utilities/priceFormater'
 import { faCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 
-export default function ChosePaymanent () {
-  const [paymentMetode, setPaymetMetode] = useState('')
-  const [cheked, setCheked] = useState(false)
+export default function Payment () {
+  const [paymentStatus, setPaymetStatus] = useState({
+    msg: 'menunggu Pembayaran',
+    color: 'text-[#FDBA00]'
+  })
 
-  const handleChekcBox = () => {
-    setCheked(!cheked)
+  const setPayed = () => {
+    setPaymetStatus({
+      msg: 'success',
+      color: 'text-[#15D41D]'
+    })
   }
-
-  const paymentMetodeData = [
-    {
-      name: 'QRIS',
-      Image: '/Statick/image/logo/qrisLogo.svg',
-      desk: 'Pembayaran melalui semua aplikasi digital (Gopay, OVO, Dana, LinkAja), dan aplikasi Bank yang sudah mendukung Qr Scanner (CIMB Mobile, Permata Mobile)'
-    },
-    {
-      name: 'gopay',
-      Image: '/Statick/image/logo/Gopay.png',
-      desk: 'pembayaran dapat melalui apilkasi gopay'
-    }
-  ]
+  const setFaild = () => {
+    setPaymetStatus({
+      msg: 'success',
+      color: 'text-red-500      '
+    })
+  }
   const name = 'mas jono'
   const timeArive = new Date()
+  const OrderId = 'DNA210917'
+  const paymentMetode = 'QRIS'
+  const lokasi = 'pantai marina'
   const resultTiket = [
     {
       name: 'tiket masuk',
@@ -66,11 +66,21 @@ export default function ChosePaymanent () {
               <div className="grid grid-cols-10 gap-36">
                   <div className="main col-span-6 w-full">
                       <div className="info text-gray-600">
-                          <p className='font-bold pb-2'>Detai Pesanan</p>
+                          <p className='font-bold pb-2'>Nomor pemesanan tiket   : {OrderId}</p>
                           <div className="flex gap-1 items-center">
-                              <span className='block w-48'>Nama</span>
+                              <span className='block w-48'>Payment Metode</span>
                               <span className='block'>: </span>
-                              <span className='block'>{name}</span>
+                              <span className='block'>{paymentMetode}</span>
+                          </div>
+                          <div className="flex gap-1 items-center">
+                              <span className='block w-48'>Status pembayaran</span>
+                              <span className='block'>: </span>
+                              <span className={`block ${paymentStatus.color} `}>{paymentStatus.msg}</span>
+                          </div>
+                          <div className="flex gap-1 items-center">
+                              <span className='block w-48'>lokasi Wisata</span>
+                              <span className='block'>: </span>
+                              <span className='block'>{lokasi}</span>
                           </div>
                           <div className="flex gap-1 items-center">
                               <span className='block w-48'>Wkatu Kedatangan</span>
@@ -120,29 +130,28 @@ export default function ChosePaymanent () {
                       <div className="top">
                           <span className='my-3 w-full block text-center bg-main-color hover:bg-cyan-700 py-4 rounded-md text-white hover:text-gray-400 shadow-md font-bold'> pilih pembayaran</span>
 
-                          {paymentMetodeData.map((item, index) => (
-                              <div key={index} onClick={() => { setPaymetMetode(item.name) }} className="w-wull my-3 bg-gray-50 p-3 rounded-md shadow-[0_2px_5px_rgba(0,0,0,0.5)]">
-                                  <div className=" w-full">
-                                      <div className={`${(paymentMetode === item.name) ? 'bg-cyan-300' : ''} w-full rounded-md px-3` }>
-                                          <div className={'w-2/3 h-20 aspect-square relative'}>
-                                              <Image
-                                                  src={item.Image}
-                                                  alt={item.name}
-                                                  fill
-                                                  className='object-contain object-center'
-                                                  sizes='500px'
-                                        />
-                                          </div>
+                          <div className="w-wull my-3 bg-gray-50 p-3 rounded-md shadow-[0_2px_5px_rgba(0,0,0,0.5)]">
+                              <div className=" w-full">
+                                  <div className={' w-full rounded-md px-3' }>
+                                      <div className={'w-2/3 h-20 aspect-square relative'}>
+                                          {/* <Image
+                                                    src={item.Image}
+                                                    alt={item.name}
+                                                    fill
+                                                    className='object-contain object-center'
+                                                    sizes='500px'
+                                        /> */}
                                       </div>
-                                      <p className='text-center text-xs font-light'>{item.desk}</p>
                                   </div>
+                                  {/* <p className='text-center text-xs font-light'>{item.desk}</p> */}
                               </div>
-                          ))}
+                          </div>
+
                       </div>
                       <div className="buttom">
                           <div className="w-full border-b-2 mb-7"></div>
                           <div className="w-full border-b-2 mb-3"></div>
-                          <div className="flex gap-3 items-center">
+                          {/* <div className="flex gap-3 items-center">
                               <input
                                   id="default-checkbox"
                                   type="checkbox"
@@ -150,7 +159,7 @@ export default function ChosePaymanent () {
                                   onChange={handleChekcBox}
                                   className='w-4 h-4 text-red-600 rounded-2xl focus:ring-red-500 '/>
                               <p>Saya Menyetujui Semua <Link href={'/'} className='underline'>Syarat dan Ketentuan yang berlaku</Link></p>
-                          </div>
+                          </div> */}
                           <div className="flex justify-center pt-5">
                               <button className='bg-main-color hover:bg-cyan-700 py-btn-padding px-16 rounded-xl text-white hover:text-gray-400 shadow-md'>
                                   <span className='drop-shadow-[0_5px_20px_rgba(0,0,0,1)]'>Proses</span>
